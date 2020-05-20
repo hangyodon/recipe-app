@@ -1,0 +1,23 @@
+<div class="wrapper">
+  <header>
+    <h1 class="logo">Recipe</h1>
+    <div class="btn">
+      <ul>
+      <li class="btn-flat-border"><a href="#">ログイン</a></li>
+      <li class="btn-flat-border"><a href="#">新規登録</a></li>
+      </ul>
+    </div>
+  </header>
+  <div class="contents">
+    <div class="top-content"></div>
+    <div class="middle-content"></div>
+    <div class="under-content">
+      <% @recipes.each do |recipe|%>
+       <p><%= recipe.title %></p>
+       <p><%= image_tag recipe.image.to_s %>
+       <p><%= recipe.calorie %></p>
+       <p><%= recipe.sugar%></p>
+      <% end %>
+    
+    </div>
+  </div>
