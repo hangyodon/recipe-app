@@ -1,0 +1,55 @@
+<div class="under-content">
+  <div class="content_post">
+    <% if user_signed_in? && current_user.id == @recipe.user_id %>
+      <div class = "more_list">
+        <%= link_to "/recipes/#{@recipe.id}/edit", method: :get ,class: "list-btn" do %>
+        <i class="fas fa-edit fa-2x "></i>
+        <% end %>
+        <%= link_to "/recipes/#{@recipe.id}", method: :delete ,class: "list-btn" do %>
+        <i class="far fa-trash-alt fa-2x"></i>
+        <% end %>
+      </div>
+    <% end %>
+  <div class="recipe-content">  
+    <div class="recipe-header">   
+      <div class="title"><%= @recipe.title %></div>
+      <div class="diet">
+        <div class="calorie">カロリー<%= @recipe.calorie %>kcal</div>
+        <div class="sugar">糖質<%= @recipe.sugar%>g</div>
+      </div>
+      <span class="tag-list">
+      <%= render 'recipes/tag_list', tag_list: @recipe.tag_list %>
+      </span>
+      <span class="name">
+        <a href="/users/<%= @recipe.user.id %>">
+          <span><%= @recipe.user.nickname %>さん</span>
+        </a>
+      </span>     
+    </div>
+    <div class="image-material">
+      <div class="recipe-img"><%= image_tag @recipe.image.to_s%></div>
+      <div class="materials">
+        <h2>材料</h2>
+      <% @recipe.materials.each do |material| %>
+      <ul class="material">
+        <li><%= material.name %></li>
+        <li><%= material.amount%></li>
+      </ul>
+      <% end %>
+      </div>
+    </div>
+    <div class="steps">
+      <h2>作り方</h2>
+      <% @recipe.steps.each do |step| %>
+        <ul class = "step">
+          <li class="step"><%= step.number %></li>
+          <li class="process"><%= step.process%></li>
+        </ul>
+      <% end %>
+    </div>
+    <%# <% if Favorite.find_by(user_id: @current_user_id, recipe_id: @recipe_id)%>
+       <%# <%= link_to("いいね！済み", "/favorites/#{@recipe.id}", {method: "destroy"}) %>
+      <%# <% else %> 
+        <%# <%= link_to("いいね！", "/favorites", {method: "post"}) %>
+      <%# <% end %>
+</div>

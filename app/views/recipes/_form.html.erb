@@ -1,0 +1,44 @@
+<div class="contents_form">
+  <%= form_for @recipe do |f| %>
+    <div class="title-field">
+      <%= f.text_field :title , placeholder: "Title" %>
+    </div>
+    <div class="img-field">
+      <%= f.label :image ,"画像を選択"%>
+      <%= f.file_field :image ,class:"img-btn"%>
+    </div>
+    <div class="data-field">
+      <%= f.text_field :calorie , placeholder: "カロリー",class: "calorie-field"%>
+      <%= f.text_field :sugar , placeholder: "糖質",class: "sugar-field"%>
+    </div>
+    <div class="tag-field">
+      <h2>タグ ( カンマで区切ってください )</h2>
+      <%# <%= f.label :tag_list %> 
+    <ul><%= f.text_field :tag_list, value: @recipe.tag_list.join(','), class: "form-control", id: "myTags" %></ul>
+    
+    <div id="materials" > 
+      <h2>材料</h2>
+      <%= f.fields_for :materials do |material| %>
+        <%= render 'material_fields', f: material %>
+      <% end %>
+      <div class='links'>
+        <%= link_to_add_association '▽ 材料を追加する',f, :materials ,id:"material-add-btn" %>       
+      </div>
+    </div>
+
+    <div id="steps">
+    <h2>手順</h2>
+      <%= f.fields_for :steps do |step| %>
+        <%= render 'step_fields', f:step %>
+      <% end %>
+      <div class='links'>
+        <%= link_to_add_association '▽ 手順を追加する',f, :steps,id:"step-add-btn" %>
+      </div>
+    </div>
+    <div class="btn-send">
+    <%= f.submit "投稿する", class:"send-btn" %>
+    </div> 
+  <% end %>
+</div>    
+
+

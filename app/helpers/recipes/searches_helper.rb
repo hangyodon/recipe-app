@@ -1,0 +1,2 @@
+module Recipes::SearchesHelper
+end

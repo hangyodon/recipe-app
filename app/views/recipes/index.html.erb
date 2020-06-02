@@ -1,23 +1,44 @@
-<div class="wrapper">
-  <header>
-    <h1 class="logo">Recipe</h1>
-    <div class="btn">
-      <ul>
-      <li class="btn-flat-border"><a href="#">ログイン</a></li>
-      <li class="btn-flat-border"><a href="#">新規登録</a></li>
-      </ul>
-    </div>
-  </header>
+
   <div class="contents">
-    <div class="top-content"></div>
-    <div class="middle-content"></div>
+    <div class="top-content">
+      <div class="search-content">
+        <%= form_with(url: recipes_searches_path, local: true, method: :get, id: "search-form") do |form| %>
+        <%= form.text_field :keyword, placeholder: "検索する", id: "search-input" %>
+        <%= button_tag type:"submit", id: "search-btn" do %>
+          <i class="fas fa-search fa-3x"></i>
+        <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class="middle-content">
+    <% @popular_tags.each do |ptag|%>
+      <%= link_to ptag, recipes_path(tag_name: ptag.name) , class: "text-white"%>      
+    <% end %>
+    </div>
     <div class="under-content">
       <% @recipes.each do |recipe|%>
-       <p><%= recipe.title %></p>
-       <p><%= image_tag recipe.image.to_s %>
-       <p><%= recipe.calorie %></p>
-       <p><%= recipe.sugar%></p>
-      <% end %>
-    
+        <div class="l-wrapper">
+          <article class="card">        
+            <div class="card__header">
+              <h3 class="card__title"><%= recipe.title %></h3>
+              <figure class="card__thumbnail">
+                <%= image_tag recipe.image.to_s%>
+              </figure>
+            </div>
+            <div class="card__body">
+              <p>カロリー<%= recipe.calorie %>kcal</p>
+              <p>糖質<%= recipe.sugar%>g</p>
+            </div>
+            <div class="card__footer">
+            <p class=""><p class="card__text"><%= link_to '詳細をみる', "/recipes/#{recipe.id}", method: :get ,class:"button -compact"%></p>
+            </div>
+          </article>
+        </div>
+      <% end %>        
     </div>
+    <div class='index-paginate'> <%= paginate(@recipes) %></div>
   </div>
+
+
+
+

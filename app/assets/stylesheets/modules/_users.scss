@@ -1,0 +1,261 @@
+.user-contents{
+  .user-content{
+    text-align: center;
+    padding-top: 30px;
+    .ribbon-content{
+      font-family: 'Lato', 'Noto Sans JP', 'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+      display: inline-block;
+      position: relative;
+      text-align: center;
+      height: 60px;
+      line-height: 60px;
+      text-align: center;
+      padding: 7px 0;
+      font-size: 18px;
+      background: #acd879;
+      color: #FFF;
+      box-sizing: border-box;
+      h1{
+        margin: 0;
+        padding: 0 30px;
+        border-top: dashed 2px rgba(255, 255, 255, 0.5);
+        border-bottom: dashed 2px rgba(255, 255, 255, 0.5);
+        line-height: 42px;
+      }
+      :before, :after{
+        position: absolute;
+        content: '';
+        width: 0px;
+        height: 0px;
+        z-index: 1;
+      }
+      :before{
+        top: 0;
+        left: 0;
+        border-width: 30px 0px 30px 15px;
+        border-color: transparent transparent transparent #fff;
+        border-style: solid;
+      }
+      :after{
+        top: 0;
+        right: 0;
+        border-width: 30px 15px 30px 0px;
+        border-color: transparent #fff transparent transparent;
+        border-style: solid;
+      }
+    }
+    }
+  .under-content{
+    display: flex;
+    margin-left: 10px;
+    margin-right: 30px;
+    font-family: 'Lato', 'Noto Sans JP', 'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+    .l-wrapper {
+      margin: 3rem auto;
+      width: 320px;
+    }
+    img {
+      width: 320px;
+      height: 250px;
+      object-fit: cover;
+      vertical-align: bottom;
+    }
+    .card {
+      background-color: #fff;
+      box-shadow: 0 0 8px rgba(0, 0, 0, .16);
+      color: #212121;
+      text-decoration: none;
+    }
+        
+        .card__header {
+          display: flex;      
+          flex-wrap: wrap;
+        }
+        
+        .card__title {
+          padding: 1rem 1rem 0;
+          font-size: 1.25rem;
+          order: 1;
+        }
+        
+        .card__thumbnail {
+          margin: 0;
+          order: 0;
+        }
+        
+        .card__image {
+          width: 100%;
+        }
+        
+        .card__body {
+          padding: 1rem;
+        }
+        
+        .card__text {
+          font-size: .75rem;
+        }
+        
+        .card__text + .card__text {
+          margin-top: .5rem;
+        }
+        
+        .card__text.-number {
+          text-align: right;
+        }
+        
+        .card__footer {
+          padding: 1rem;
+          border-top: 1px solid #ddd;
+        }
+        
+        .button {
+          display: inline-block;
+          text-decoration: none;
+          transition: background-color .3s ease-in-out;
+        }
+        
+        .button.-compact {
+          padding: .5rem 1rem;
+          border-radius: .25rem;
+          background-color: #26a69a;
+          color: #fff;
+          font-weight: bold;
+        }
+        
+        .button.-compact:hover,
+        .button.-compact:focus {
+          background-color: #80cbc4;
+        }
+      }
+        @import url(https://fonts.googleapis.com/css?family=Corben:700);
+        .user-paginate{
+          text-align: center;
+          margin:0 auto;
+          font-size: 20px;
+          font-family: 'Corben', cursive;;
+          a:visited{
+            color: #26a69a;
+          }
+          a:hover, a:active, a:focus, a:target{
+           color: #A269A8;
+          }
+        }
+}
+//新規登録
+
+@import 
+url(https://fonts.googleapis.com/css?family=Quicksand);
+
+.form-wrapper{
+  // position: relative;
+  font-family: 'Quicksand', sans-serif;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 500px;
+  margin: 100px auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  :focus {
+    outline: none;
+  }
+  a, a:visited {
+    color: #212121;
+  }
+  a:hover{
+    color: #26a69a;
+  }
+  h2{
+    font-size: 35px;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+  .field{
+    label{
+      font-size: 20px;
+    }
+    input {
+      box-sizing: border-box;
+      width: 100%;
+      padding: 0.3em;
+      transition: 0.3s;
+      letter-spacing: 1px;
+      color: #aaaaaa;
+      border: none;
+      border-bottom: 2px solid #1b2538;
+      background: transparent;
+      margin-bottom: 30px;
+      margin-top: 5px;
+      text-align: center;
+    }
+    input:focus{
+      border-bottom: 2px solid #26a69a;
+	    outline: none;
+    }
+    }
+  
+  
+  .check-item{
+    width: 90%;
+    margin: 2em auto;
+    .option-input{
+      position: relative;
+      margin: 0 1rem 0 0;
+      cursor: pointer;
+    }
+    .option-input:before{
+      position: absolute;
+      z-index: 1;
+      top: 0.125rem;
+      left: 0.1875rem;
+      width: 0.75rem;
+      height: 0.375rem;
+      content: '';
+      -webkit-transition: -webkit-transform 0.4s cubic-bezier(0.45, 1.8, 0.5, 0.75);
+              transition:         transform 0.4s cubic-bezier(0.45, 1.8, 0.5, 0.75);
+      -webkit-transform: rotate(-45deg) scale(0, 0);
+              transform: rotate(-45deg) scale(0, 0);
+      border: 2px solid #da3c41;
+      border-top-style: none;
+      border-right-style: none;
+    }
+    .option-input:checked:before{
+      -webkit-transform: rotate(-45deg) scale(1, 1);
+	        transform: rotate(-45deg) scale(1, 1);
+    }
+    .option-input:after{
+      position: absolute;
+      top: -0.125rem;
+      left: 0;
+      width: 1rem;
+      height: 1rem;
+      content: '';
+      cursor: pointer;
+      border: 2px solid #f2f2f2;
+      background: #ffffff;
+    }
+  }
+      .btn-actions{
+        padding-bottom: 10px;
+        padding-top: 10px;
+        .action-btn{
+          display: inline-block;
+          padding: 0.3em 1em;
+          text-decoration: none;
+          color:  #26a69a;
+          border: solid 2px  #26a69a;
+          border-radius: 3px;
+          transition: .4s;
+          background-color: #ffffff;
+        }
+        .action-btn:hover{
+          background: #26a69a;
+          color: white;
+        }
+      }
+  .link-contents{
+    .sign-up-link {
+      padding-bottom: 30px;
+    }
+  }
+}

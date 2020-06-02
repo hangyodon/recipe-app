@@ -1,15 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
   <head>
     <title>RecipeApp</title>
+  
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
+    
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
   </head>
 
   <body>
+  <header>
+    <h1 class="logo"><%= link_to "Recipe",root_path %></h1>
+    <% if user_signed_in? %>
+      <div class="btn">
+        <ul>
+          <li class="btn-flat-border"><%= link_to "マイページ","/users/#{current_user.id}" %>
+          <li class="btn-flat-border"><%= link_to "投稿する", "/recipes/new", class: "post" %></li>
+          <li class="btn-flat-border"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+        </ul>
+      </div>
+    <% else %>
+      <div class="btn">
+        <ul>
+          <li class="btn-flat-border"><%= link_to "ログイン", new_user_session_path, class: 'post' %></li>
+          <li class="btn-flat-border"><%= link_to "新規登録", new_user_registration_path, class: 'post' %></li>
+        </ul>
+      </div>
+    <% end %>
+  </header>
     <%= yield %>
   </body>
 </html>
