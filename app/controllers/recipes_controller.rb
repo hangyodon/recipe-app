@@ -45,10 +45,12 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
+    @favorite = Favorite.new
   end
 
   def search
     @recipes = Recipe.search(params[:keyword])
+    @recipes = @recipes.page(params[:page])
   end
 
 

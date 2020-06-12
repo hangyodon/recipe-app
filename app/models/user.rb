@@ -3,6 +3,11 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :recipes
+  has_many :recipes, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :favorited_recipes, through: :favorites, source: :recipe
+  
+  def already_favorited?(recipe)
+    self.favorites.exists?(recipe_id: recipe.id)
+  end
 end

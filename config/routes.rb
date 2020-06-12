@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   namespace :recipes do
     resources :searches, only: :index
   end
-  resources :recipes, only: [:index, :new, :create, :destroy, :edit, :update, :show]
+  resources :recipes, only: [:index, :new, :create, :destroy, :edit, :update, :show] do
+    resources :favorites, only: [:create, :destroy]
+  end
   resources :users, only: :show
-  resources :favorites, only: [:create, :destroy]
 end

@@ -1,5 +1,10 @@
 <div class="under-content">
   <div class="content_post">
+    <% if user_signed_in? %>
+      <div id="favorite-<%= @recipe.id %>",class="fav_btn">
+        <%= render partial: "favorite", locals: { recipe: @recipe } %>
+      </div>
+    <% end %>
     <% if user_signed_in? && current_user.id == @recipe.user_id %>
       <div class = "more_list">
         <%= link_to "/recipes/#{@recipe.id}/edit", method: :get ,class: "list-btn" do %>
@@ -10,6 +15,7 @@
         <% end %>
       </div>
     <% end %>
+  </div>
   <div class="recipe-content">  
     <div class="recipe-header">   
       <div class="title"><%= @recipe.title %></div>
@@ -47,9 +53,4 @@
         </ul>
       <% end %>
     </div>
-    <%# <% if Favorite.find_by(user_id: @current_user_id, recipe_id: @recipe_id)%>
-       <%# <%= link_to("いいね！済み", "/favorites/#{@recipe.id}", {method: "destroy"}) %>
-      <%# <% else %> 
-        <%# <%= link_to("いいね！", "/favorites", {method: "post"}) %>
-      <%# <% end %>
 </div>
