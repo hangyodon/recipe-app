@@ -9,10 +9,11 @@ class Recipe < ApplicationRecord
   has_many :steps, foreign_key: "recipe_id", dependent: :destroy
   accepts_nested_attributes_for :steps, allow_destroy: true
   has_many :favorites, dependent: :destroy
+  has_many :favorited_users, through: :favorites, source: :user
 
   def self.search(search)
     if search
-      Recipe.joins(:materials).where('materials.name LIKE (?)', "%#{search}%")
+      Recipe.joins(:materials).where('recipes.title LIKE (?) OR materials.name LIKE (?)', "%#{search}%", "%#{search}%")
     else
       Recipe.all
     end
