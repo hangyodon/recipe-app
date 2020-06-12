@@ -394,6 +394,29 @@ header {
       -moz-appearance: none;
     }
   }
+
+  .preview-content{
+    padding-top: 10px;
+    width: 200px;
+    img {
+      object-fit: cover;
+      width: 300px;
+      height: 200px;
+    }
+    .lower-box{
+      display: flex;
+      padding: 5px 0 10px 0;
+      .delete-box{
+        border: 3px solid #00bcd4;
+        text-align: center;
+        border-radius: 5px;
+        cursor: pointer;
+        color: #00bcd4;
+        width: 100px;
+        margin-left :10px;
+      }
+    }
+  }
   .img-field {
     position: relative;
     display: inline-block;
@@ -408,6 +431,9 @@ header {
     border-radius: 5px;
     input {
       display: none;
+    }
+    label {
+      cursor: pointer;
     }
   }
   .img-field:active {
