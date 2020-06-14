@@ -11,6 +11,8 @@ class Recipe < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorited_users, through: :favorites, source: :user
 
+
+
   def self.search(search)
     if search
       Recipe.joins(:materials).where('recipes.title LIKE (?) OR materials.name LIKE (?)', "%#{search}%", "%#{search}%")

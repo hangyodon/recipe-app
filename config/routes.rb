@@ -7,5 +7,10 @@ Rails.application.routes.draw do
   resources :recipes, only: [:index, :new, :create, :destroy, :edit, :update, :show] do
     resources :favorites, only: [:create, :destroy]
   end
-  resources :users, only: :show
+  resources :users, only: [:show] do
+    member do
+      get :favorites
+    end
+  end
+  
 end

@@ -3,6 +3,7 @@
     <% if user_signed_in? %>
       <div id="favorite-<%= @recipe.id %>",class="fav_btn">
         <%= render partial: "favorite", locals: { recipe: @recipe } %>
+        <%= @favorites_count %>
       </div>
     <% end %>
     <% if user_signed_in? && current_user.id == @recipe.user_id %>

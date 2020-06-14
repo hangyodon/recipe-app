@@ -13,7 +13,7 @@ class RecipesController < ApplicationController
     end
 
     # @tags = Recipe.tag_counts_on(:tags).order('count DESC')
-    @popular_tags = ActsAsTaggableOn::Tag.most_used(10)
+    @popular_tags = ActsAsTaggableOn::Tag.most_used(8)
   end
 
   def new
@@ -46,6 +46,7 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     @favorite = Favorite.new
+    @favorites_count = Favorite.where(recipe_id: @recipe.id).count
   end
 
   def search

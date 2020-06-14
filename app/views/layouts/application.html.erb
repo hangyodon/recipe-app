@@ -22,6 +22,7 @@
     <% if user_signed_in? %>
       <div class="btn">
         <ul>
+          <li class="btn-flat-border"><%= link_to "iine", "/users/#{current_user.id}/favorites"%>
           <li class="btn-flat-border"><%= link_to "マイページ","/users/#{current_user.id}" %>
           <li class="btn-flat-border"><%= link_to "投稿する", "/recipes/new", class: "post" %></li>
           <li class="btn-flat-border"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>

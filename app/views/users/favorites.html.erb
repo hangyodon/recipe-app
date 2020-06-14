@@ -1,0 +1,28 @@
+<div class="favorite-content">
+  <div class="top-content">
+    <h1><%= @nickname %>さんのお気に入り一覧</h1>
+  </div>
+  <div class="middle-content">
+    <div class="favorite-list">
+      <% current_user.favorited_recipes.each do |recipe| %>
+        <div class="l-wrapper">
+          <article class="card">        
+            <div class="card__header">
+              <h3 class="card__title"><%= recipe.title %></h3>
+              <figure class="card__thumbnail">
+                <%= image_tag recipe.image.to_s%>
+              </figure>
+            </div>
+            <div class="card__body">
+              <p>カロリー<%= recipe.calorie %>kcal</p>
+              <p>糖質<%= recipe.sugar%>g</p>
+            </div>
+            <div class="card__footer">
+              <p class=""><p class="card__text"><%= link_to '詳細をみる', "/recipes/#{recipe.id}", method: :get ,class:"button -compact"%></p>
+            </div>
+          </article>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>        
