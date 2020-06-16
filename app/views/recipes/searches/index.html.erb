@@ -1,13 +1,5 @@
 <div class="contents">
     <div class="top-content">
-      <div class="search-content">
-        <%= form_with(url: recipes_searches_path, local: true, method: :get, id: "search-form") do |form| %>
-        <%= form.text_field :keyword, placeholder: "検索する", id: "search-input" %>
-        <%= button_tag type:"submit", id: "search-btn" do %>
-          <i class="fas fa-search fa-3x"></i>
-        <% end %>
-        <% end %>
-      </div>
     </div>
     <div class="under-content">
       <% @recipes.each do |recipe|%>

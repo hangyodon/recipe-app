@@ -1,19 +1,19 @@
 
   <div class="contents">
-    <div class="top-content">
-      <div class="search-content">
-        <%= form_with(url: recipes_searches_path, local: true, method: :get, id: "search-form") do |form| %>
-        <%= form.text_field :keyword, placeholder: "検索する", id: "search-input" %>
-        <%= button_tag type:"submit", id: "search-btn" do %>
-          <i class="fas fa-search fa-3x"></i>
-        <% end %>
-        <% end %>
-      </div>
+    <div class="category-content">
+      <ul>
+        <li class="btn-circle-border", id="main"><%= link_to "main","/recipes/main" %></li>
+        <li class="btn-circle-border", id="side"><%= link_to "side","/recipes/side" %></li>
+        <li class="btn-circle-border", id="soup"><%= link_to "soup","/recipes/soup" %></li>
+      <ul>
     </div>
     <div class="middle-content">
-    <% @popular_tags.each do |ptag|%>
-      <%= link_to ptag, recipes_path(tag_name: ptag.name) , class: "text-white"%>      
-    <% end %>
+      <div class="ranking">
+        <p>Tag ranking</p>
+      </div>
+      <% @popular_tags.each do |ptag|%>
+        <%= link_to ptag, recipes_path(tag_name: ptag.name) , class: "text-white"%>      
+      <% end %>
     </div>
     <div class="under-content">
       <% @recipes.each do |recipe|%>

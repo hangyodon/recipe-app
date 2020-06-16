@@ -13,29 +13,43 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
     
   </head>
 
   <body>
-  <header>
+  <header id="header">
     <h1 class="logo"><%= link_to "Recipe",root_path %></h1>
-    <% if user_signed_in? %>
-      <div class="btn">
-        <ul>
-          <li class="btn-flat-border"><%= link_to "iine", "/users/#{current_user.id}/favorites"%>
-          <li class="btn-flat-border"><%= link_to "マイページ","/users/#{current_user.id}" %>
-          <li class="btn-flat-border"><%= link_to "投稿する", "/recipes/new", class: "post" %></li>
-          <li class="btn-flat-border"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-        </ul>
-      </div>
-    <% else %>
-      <div class="btn">
-        <ul>
-          <li class="btn-flat-border"><%= link_to "ログイン", new_user_session_path, class: 'post' %></li>
-          <li class="btn-flat-border"><%= link_to "新規登録", new_user_registration_path, class: 'post' %></li>
-        </ul>
-      </div>
-    <% end %>
+    <div class="search-content">
+        <%= form_with(url: recipes_searches_path, local: true, method: :get, id: "search-form") do |form| %>
+        <%= form.text_field :keyword, placeholder: "検索する", id: "search-input" %>
+        <%= button_tag type:"submit", id: "search-btn" do %>
+        <i class="fas fa-search fa-2x"></i>
+        <% end %>
+        <% end %>
+    </div>
+      <% if user_signed_in? %>
+          <div class="dropdwn">
+            <li class="btn-flat-border">メニュー
+              <ul class="dropdwn__menu">
+                <li><%= link_to "マイページ","/users/#{current_user.id}" %></li>
+                <li><%= link_to "お気に入り", "/users/#{current_user.id}/favorites"%></li>
+                <li><%= link_to "新規投稿", "/recipes/new", class: "post" %></li>
+                <li><%= link_to "プロフィール変更", "/users/edit" %></li>
+              </ul>
+            </li>
+          </div>
+          <div class="log-out">
+            <li class="btn-flat-border"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></div>
+          </div>
+      <% else %>
+        <div class="btn">
+          <ul>
+            <li class="btn-flat-border"><%= link_to "ログイン", new_user_session_path, class: 'post' %></li>
+            <li class="btn-flat-border"><%= link_to "新規登録", new_user_registration_path, class: 'post' %></li>
+          </ul>
+        </div>
+      <% end %>
   </header>
     <%= yield %>
     
