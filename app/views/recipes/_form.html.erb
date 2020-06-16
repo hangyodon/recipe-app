@@ -3,6 +3,11 @@
     <div class="title-field">
       <%= f.text_field :title , placeholder: "Title" %>
     </div>
+    <div class="category-field">
+      <label><%= f.radio_button :category, :main%> main </label>
+      <label><%= f.radio_button :category, "side"%> side </label>
+      <label><%= f.radio_button :category, "soup"%> soup </label>
+    </div>
     <div class="img-field">
       <%= f.label :image ,"画像を選択"%>
       <%= f.file_field :image ,class:"img-btn" ,id: :recipe_image %>
@@ -15,7 +20,7 @@
       <h2>タグ ( カンマで区切ってください )</h2>
       <%# <%= f.label :tag_list %> 
     <ul><%= f.text_field :tag_list, value: @recipe.tag_list.join(','), class: "form-control", id: "myTags" %></ul>
-    
+    </div>
     <div id="materials" > 
       <h2>材料</h2>
       <%= f.fields_for :materials do |material| %>

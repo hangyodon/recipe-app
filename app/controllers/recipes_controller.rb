@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController
 
-  before_action :move_to_index, except: [:index, :show, :search]
+  before_action :move_to_index, except: [:index, :show, :search, :main, :side, :soup]
   def index
     if params[:tag]
       @recipes = Recipe.tagged_with(params[:tag])
@@ -11,9 +11,20 @@ class RecipesController < ApplicationController
     if params[:tag_name]
       @recipes = Recipe.tagged_with("#{params[:tag_name]}").page(params[:page]).per(4)
     end
-
     # @tags = Recipe.tag_counts_on(:tags).order('count DESC')
-    @popular_tags = ActsAsTaggableOn::Tag.most_used(8)
+    @popular_tags = ActsAsTaggableOn::Tag.most_used(8)   
+  end
+
+  def main
+    @recipes = Recipe.where(category: "main")
+  end
+
+  def side
+    @recipes = Recipe.where(category: "side")
+  end
+
+  def soup
+    @recipes = Recipe.where(category: "soup")
   end
 
   def new
@@ -26,7 +37,7 @@ class RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(recipe_params)
     @recipe.save
-    redirect_to root_path
+    redirect_to root_path, notice: '投稿が完了しました'
   end
 
   def destroy
@@ -58,11 +69,11 @@ class RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:title, :image, :calorie, :sugar, :tag_list, materials_attributes: [:id, :name, :amount, :_destroy], steps_attributes: [:id, :number, :process, :_destroy]).merge(user_id: current_user.id)
+    params.require(:recipe).permit(:title, :category, :image, :calorie, :sugar, :tag_list,  materials_attributes: [:id, :name, :amount, :_destroy], steps_attributes: [:id, :number, :process, :_destroy]).merge(user_id: current_user.id)
   end
 
   def update_recipe_params
-    params.require(:recipe).permit(:title, :image, :calorie, :sugar, :tag_list, materials_attributes: [:name, :amount, :_destroy, :id], steps_attributes: [:number, :process, :_destroy, :id])
+    params.require(:recipe).permit(:title, :category, :image, :calorie, :sugar, :tag_list, materials_attributes: [:name, :amount, :_destroy, :id], steps_attributes: [:number, :process, :_destroy, :id])
   end
 
   def move_to_index

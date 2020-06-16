@@ -31,10 +31,11 @@ ActiveRecord::Schema.define(version: 2020_06_07_092036) do
   end
 
   create_table "recipes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "title"
+    t.string "title", null: false
     t.string "image"
     t.integer "calorie"
     t.string "sugar"
+    t.string "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"

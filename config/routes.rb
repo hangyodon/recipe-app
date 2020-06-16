@@ -6,6 +6,13 @@ Rails.application.routes.draw do
   end
   resources :recipes, only: [:index, :new, :create, :destroy, :edit, :update, :show] do
     resources :favorites, only: [:create, :destroy]
+
+    collection do
+      get 'main'
+      get 'side'
+      get 'soup'
+    end
+
   end
   resources :users, only: [:show] do
     member do
