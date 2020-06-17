@@ -5,7 +5,7 @@ class Recipes::SearchesController < ApplicationController
     @recipes = []
     split_keyword.each do |keyword|
       next if keyword == ""
-      @recipes += Recipe.joins(:materials).where('recipes.title LIKE (?) AND materials.name LIKE (?)', "%#{search}%", "%#{search}%")
+      @recipes += Recipe.joins(:materials).where('recipes.title LIKE (?) AND materials.name LIKE (?)', "%#{keyword}%", "%#{keyword}%")
     end
     @recipes.uniq!
   end
