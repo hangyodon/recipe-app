@@ -1,6 +1,6 @@
 <% if current_user.already_favorited?(@recipe) %>
   <%= link_to recipe_favorite_path(@recipe), method: :delete, remote: true do %>
-    <i class="fas fa-heart fa-3x"></i>
+    <i class="fas fa-heart fa-2x"></i>
   <% end %>
 <% else %>
   <%= link_to recipe_favorites_path(@recipe), method: :post, remote: true do %>
