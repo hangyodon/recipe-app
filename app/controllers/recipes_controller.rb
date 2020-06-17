@@ -61,8 +61,15 @@ class RecipesController < ApplicationController
   end
 
   def search
-    @recipes = Recipe.search(params[:keyword])
-    @recipes = @recipes.page(params[:page])
+    redirect_to root_path if params[:keyword] == ""
+    split_keyword = params[:keyword].split(/[[:blank:]]+/)
+    @recipes = []
+    split_keyword.each do |keyword|
+      next if keyword == ""
+      @recipes += Recipe.joins(:materials).where('recipes.title LIKE (?) OR materials.name LIKE (?)', "%#{keyword}%", "%#{keyword}%")
+    end
+    @recipes.uniq!
+    @recipes = Recipe.page(params[:page]).per(4).order("created_at DESC")
   end
 
 

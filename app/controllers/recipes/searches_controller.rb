@@ -1,5 +1,12 @@
 class Recipes::SearchesController < ApplicationController
   def index
-    @recipes = Recipe.search(params[:keyword])
+    redirect_to root_path if params[:keyword] == ""
+    split_keyword = params[:keyword].split(/[[:blank:]]+/)
+    @recipes = []
+    split_keyword.each do |keyword|
+      next if keyword == ""
+      @recipes += Recipe.joins(:materials).where('recipes.title LIKE (?) AND materials.name LIKE (?)', "%#{search}%", "%#{search}%")
+    end
+    @recipes.uniq!
   end
 end
