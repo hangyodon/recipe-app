@@ -1,4 +1,5 @@
 $(document).on('turbolinks:load', function(){
+
   $(function(){
 
   //querySelectorでfile_fieldを取得
@@ -47,10 +48,22 @@ $(document).on('turbolinks:load', function(){
 
 $(document).on('turbolinks:load', function(){
 $(function(){
-    $('.dropdwn li').hover(function(){
-        $("ul", this).slideDown();
-    }, function(){
-        $("ul.dropdwn_menu",this).slideUp();
-    });
+  $('.dropdwn li').hover(function(){
+      $("ul", this).slideDown();
+  }, function(){
+      $("ul.dropdwn_menu",this).slideUp();
   });
+});
+
+$(function(){
+  $('#comments').hover(function(){
+    $('.comment-select').show();
+  });
+});
+
+$(function(){
+  $('.comment-select__write').on('click',function(){
+    $('.comment-fields').show();
+  });
+});
 });

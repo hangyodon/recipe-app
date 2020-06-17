@@ -85,7 +85,6 @@ header {
       transform: translateY(-5px);
     }
   }
-  //変更するとこ-------------------
   .btn li {
     display: inline;
     font-size: 15px;
@@ -112,7 +111,6 @@ header {
     background: #26a69a;
     color: white;
   }
-  //-------------------------
   .dropdwn{
     width: 150px;
     ul{
@@ -294,6 +292,21 @@ header {
 
     .card__body {
       padding: 1rem;
+      .maru {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        flex-flow: column; 
+        vertical-align: top;
+        width: 90px;
+        height: 60px;
+        color: orange;
+        border: 3px solid orange;
+        margin-right: 10px;
+        font-size: 20px;
+      }
+      
     }
 
     .card__text {
@@ -350,117 +363,170 @@ header {
 }
 
 //詳細ページ
-.content_post {
+.details-content{
   width: calc(100vw - 20vw);
-  margin-left: 10vw;
-  height: 30px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top:20px;
-  a, a:visited {
-    color: #ff1493;
-  }
-  .fav_btn {
-    padding-left: 10px;
-  }
-  .more_list {
-    a:link,
-    a:visited,
-    a:active {
-      color: #a269a8;
-    }
-    a:hover {
-      color: #9932cc;
-    }
-    .list-btn {
-      margin-left: 5px;
-      margin-right: 10px;
-      padding-top: 10px;
-    }
-  }
-}
-.recipe-content {
-  padding: 1em 1em;
-  border: double 5px #26a69a;
-  width: calc(100vw - 20vw);
-  margin-left: 10vw;
-  margin-top: 30px;
-  img {
-    border-radius: 30px;
-    width: 350px;
-    height: 250px;
-  }
-  h2 {
-    background-color: #e6e6fa;
-    font-size: 20px;
-  }
-  li {
-    display: inline;
-  }
-  a {
-    display: inline;
-  }
-  .recipe-header {
+  margin: 0 auto;
+  .content_post {    
     display: flex;
     justify-content: space-between;
-    margin: 0 30px;
-    .title {
-      font-size: 25px;
-      text-align: center;
+    align-items: center;
+    padding-top: 15px;
+    a, a:visited {
+      color: #ff1493;
     }
-
-    .diet {
-      display: flex;
-      margin-top: 5px;
+    .more_list {
+      a:link,
+      a:visited,
+      a:active {
+        color: #a269a8;
+      }
+      a:hover {
+        color: #9932cc;
+      }
+      .list-btn {
+        margin-left: 5px;
+        margin-right: 10px;
+        padding-top: 10px;
+      }
+    }
+  }
+  .recipe-content {
+    padding: 1em 1em;
+    border: double 5px #26a69a;
+    margin-top: 15px;
+    img {
+      border-radius: 30px;
+      width: 350px;
+      height: 250px;
+    }
+    h2 {
+      background-color: #e6e6fa;
       font-size: 20px;
-      .sugar {
+    }
+    li {
+      display: inline;
+    }
+    a {
+      display: inline;
+    }
+    .recipe-header {
+      display: flex;
+      justify-content: space-between;
+      margin: 0 30px;
+      .title {
+        font-size: 25px;
+        text-align: center;
+      }
+  
+      .diet {
+        display: flex;
+        margin-top: 5px;
+        font-size: 20px;
+        .sugar {
+          padding-left: 20px;
+        }
+      }
+      .text-white {
+        margin-top: 5px;
+        position: relative;
+        display: inline-block;
+        font-weight: bold;
+        padding: 0.25em 0.5em;
+        text-decoration: none;
+        color: #00bcd4;
+        background: #ececec;
+        transition: 0.4s;
+      }
+      .name {
+        font-size: 20px;
+        margin-top: 5px;
         padding-left: 20px;
       }
+      .text-white:hover {
+        background: #00bcd4;
+        color: white;
+      }
+      a:visited {
+        color: #00bcd4;
+      }
     }
-    .text-white {
-      margin-top: 5px;
-      position: relative;
-      display: inline-block;
-      font-weight: bold;
-      padding: 0.25em 0.5em;
-      text-decoration: none;
-      color: #00bcd4;
-      background: #ececec;
-      transition: 0.4s;
-    }
-    .name {
-      font-size: 20px;
-      margin-top: 5px;
-      padding-left: 20px;
-    }
-    .text-white:hover {
-      background: #00bcd4;
-      color: white;
-    }
-    a:visited {
-      color: #00bcd4;
-    }
-  }
-  .image-material {
-    display: flex;
-    padding-top: 20px;
-    .materials {
-      padding-left: 20px;
-      margin-top: 5px;
-      width: 100%;
-      .material {
+    .image-material {
+      display: flex;
+      padding-top: 20px;
+      .materials {
+        padding-left: 20px;
         margin-top: 5px;
-        margin-left: 10px;
+        width: 100%;
+        .material {
+          margin-top: 5px;
+          margin-left: 10px;
+        }
+      }
+    }
+    .steps {
+      margin-top: 10px;
+      margin-left: 10px;
+      .step {
+        margin-top: 5px;
+        margin-left: 5px;
       }
     }
   }
-  .steps {
-    margin-top: 10px;
-    margin-left: 10px;
-    .step {
-      margin-top: 5px;
-      margin-left: 5px;
+  .comment-content{
+    margin-top: 15px;
+    &__comments{
+      display: flex;
+      #comments{
+        padding-left: 10px;
+        cursor: pointer;
+      }
+      .comment-select{
+        margin-left: 20px;
+        text-align: center;
+        display: none;
+        a:visited{
+          color: black;
+        }
+        &__write:hover{
+          // border-bottom: 2px solid #00bcd4;
+          background-color: #00bcd4;
+          border-radius: 3px;
+          cursor: pointer;
+        }
+        &__see:hover{
+          // border-bottom: 2px solid #00bcd4;
+          background-color: #00bcd4;
+          border-radius: 3px;
+          cursor: pointer;
+        }
+      }
+      .comment-fields{
+        display: none;
+        .comment-field{
+          margin-left: 30px;
+          display: flex;
+          :focus {
+            outline: none;
+          }
+          textarea{
+            width: 100%;
+            max-width: 390px;
+            padding: 5px;
+            border-radius: 5px;
+            border: 2px solid #ccc
+          }
+          .comment-btn{
+            margin-left: 10px;
+            background: #00bcd4;
+            border: none;
+            color: #ffffff;
+            padding: 3px;
+            border-radius: 5px;
+            cursor: pointer;  
+          }
+        }
+      }
+
     }
   }
 }

@@ -36,8 +36,12 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(recipe_params)
-    @recipe.save
-    redirect_to root_path, notice: '投稿が完了しました'
+    if @recipe.save
+      redirect_to root_path, notice: '投稿が完了しました'
+    else
+      flash.now[:alert] = '投稿に失敗しました'
+      render :new
+    end
   end
 
   def destroy
@@ -58,6 +62,9 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     @favorite = Favorite.new
     @favorites_count = Favorite.where(recipe_id: @recipe.id).count
+    @comment = Comment.new
+    @comments = @recipe.comments.includes(:user)
+    @comments_count = Comment.where(recipe_id: @recipe.id).count
   end
 
   def search
@@ -66,7 +73,7 @@ class RecipesController < ApplicationController
     @recipes = []
     split_keyword.each do |keyword|
       next if keyword == ""
-      @recipes += Recipe.joins(:materials).where('recipes.title LIKE (?) OR materials.name LIKE (?)', "%#{keyword}%", "%#{keyword}%")
+      @recipes += Recipe.joins(:materials).where('recipes.title LIKE (?) AND materials.name LIKE (?)', "%#{keyword}%", "%#{keyword}%")
     end
     @recipes.uniq!
     @recipes = Recipe.page(params[:page]).per(4).order("created_at DESC")
