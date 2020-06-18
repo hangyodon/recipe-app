@@ -1,6 +1,17 @@
-<% @comments.each do |comment|%>
-  <p>
-    <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>：</strong>
-    <%= comment.text %>
-  </p>
-<% end %>
+<div class="comments-content">
+  <div class="comment-content">
+    <% @comments.each do |comment|%>
+      <article class="comment-content__comment">
+        <div class="comment-content__comment__name">
+          <%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>
+        </div>
+        <div class="comment-content__comment__text">
+          <%= comment.text %>
+        </div>
+        <div class="comment-content__comment__time">
+          <%= comment.created_at.strftime('%Y/%m/%d') %>
+        </div>
+      </article>
+    <% end %>
+  </div>
+</div>
