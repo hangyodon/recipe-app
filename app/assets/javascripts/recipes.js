@@ -1,5 +1,6 @@
 $(document).on('turbolinks:load', function(){
 
+
   $(function(){
 
   //querySelectorでfile_fieldを取得
@@ -28,10 +29,12 @@ $(document).on('turbolinks:load', function(){
       $('.img-field').before(html);
     }
     fileReader.readAsDataURL(file);
+    $('.img-field label').text('画像を変更する');
 
     $(document).on('click', '.delete-box', function() {
       $('.preview-content').remove();
       $('#recipe_image').val("");
+      $('.img-field label').text('画像を選択する');
 
     });
 
@@ -66,4 +69,11 @@ $(function(){
     $('.comment-fields').show();
   });
 });
+
+$(function(){
+  $('#reports').hover(function(){
+    $('.report__select').show();
+  });
+})
+
 });
