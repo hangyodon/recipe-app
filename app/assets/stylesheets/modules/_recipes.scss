@@ -163,7 +163,6 @@ header {
 }
 
 .contents {
-  width: 100vw;
   height: calc(100vh - 70px);
   .category-content{
     display: flex;
@@ -181,7 +180,7 @@ header {
       line-height: 80px;
       border-radius: 50%;
       text-align: center;
-      overflow: hidden;
+      // overflow: hidden;
       box-shadow: 0px 0px 0px 5px #8cd460;
       border: solid 2px rgba(255, 255, 255, 0.47);
       transition: .4s;
@@ -218,6 +217,7 @@ header {
       justify-content: center;
       color: #26A6A4;
       font-family: "Corben", cursive;
+      padding-bottom: 10px;
       p {
         margin-left: 15px;
         font-size: 20px;
@@ -373,6 +373,40 @@ header {
     padding-top: 15px;
     a, a:visited {
       color: #ff1493;
+    }
+    &__left{
+      display: flex;
+      &__fav{
+        color: #ff1493;
+        padding-top: 13px;
+        font-size: 15px;
+      }
+      .report{
+        display: flex;
+        #reports{
+          margin-left: 15px;
+          color: orange;
+          cursor: pointer;
+        }
+        &__select{
+          margin-left: 20px;
+          text-align: center;
+          display: none;
+          a:visited{
+            color: black;
+          }
+          &__write:hover{
+            background-color: orange;
+            border-radius: 3px;
+            cursor: pointer;
+          }
+          &__see:hover{
+            background-color: orange;
+            border-radius: 3px;
+            cursor: pointer;
+          }
+        }
+      }
     }
     .more_list {
       a:link,
@@ -780,4 +814,182 @@ header {
   }
 }
 
+
+//つくレポ投稿フォーム
+
+.report_form{
+  z-index: 1;
+  background: #ffffff;
+  max-width: 800px;
+  margin: 50px auto 50px;
+  padding: 45px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  :focus {
+    outline: none;
+  }
+  input {
+    border: none;
+  }
+  .report-title{
+    font-size: 30px;
+    margin-bottom: 10px;
+  }
+  .preview-content{
+    padding-top: 10px;
+    width: 200px;
+    img {
+      object-fit: cover;
+      width: 300px;
+      height: 200px;
+      border-radius: 5px;
+    }
+    .lower-box{
+      display: flex;
+      padding: 5px 0 10px 0;
+      .delete-box{
+        border: 3px solid #00bcd4;
+        text-align: center;
+        border-radius: 5px;
+        cursor: pointer;
+        color: #00bcd4;
+        width: 100px;
+        margin-left :10px;
+      }
+    }
+  }
+  .img-field {
+    position: relative;
+    display: inline-block;
+    font-weight: bold;
+    padding: 0.25em 0.5em;
+    text-decoration: none;
+    color: #fff;
+    background: orange;
+    transition: 0.4s;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    input {
+      display: none;
+    }
+    label {
+      cursor: pointer;
+    }
+  }
+  .text-field{
+    margin-top: 15px;
+    textarea{
+      width: 450px;
+      max-width: 600px;
+      height: 200px;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+  }
+  .btn-send{
+    margin-top: 10px;
+    .report-btn{
+      cursor: pointer;
+      position: relative;
+      display: inline-block;
+      font-weight: bold;
+      padding: 0.25em 0.5em;
+      text-decoration: none;
+      color: #fff;
+      background: orange;
+      transition: 0.4s;
+      margin-top: 5px;
+      margin-bottom: 5px;
+      border-radius: 5px;
+    }
+  }
+}
+
+//レポート
+.reports-content{
+  width: 100vw;
+  height: 100vh;
+  img{
+    width: 220px;
+    height: 150px;
+    object-fit: cover;
+    vertical-align: bottom;
+    border-radius: 5px;
+  }
+  .report-content{
+    width: 1200px;
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 30px auto ;
+    &__val{
+      background-color: #fff;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.16);
+      color: #212121;
+      text-decoration: none;
+      width: 250px;
+      height: 350px;
+      padding: 15px;
+      margin-right: 20px;
+      margin-top: 30px;
+      position: relative;
+      &__text{
+        padding-top: 10px;
+      }
+      &__name{
+        position: absolute;
+        bottom: 15px;
+        display: flex;
+        a,a:visited{
+          color: black;
+        }
+        a:hover{
+          color: #06c8d9;
+        }
+      }
+    }
+  }
+  &__paginate{
+    text-align: center;
+    margin: 0 auto;
+    font-size: 20px;
+    font-family: "Corben", cursive;
+    a:visited {
+      color: #26a69a;
+    }
+    a:hover,
+    a:active,
+    a:focus {
+      color: #a269a8;
+    }
+  }
+}
+
+//コメント
+.comments-content{
+  .comment-content{
+    max-width: 800px;
+    margin: 50px auto 50px;
+    padding: 45px;
+    border: 10px solid paleturquoise;
+    a,a:visited{
+      color: #a269a8;
+    }
+    &__comment{
+      display: flex;
+      background-color: paleturquoise;
+      padding: 5px;
+      margin-bottom:5px;
+      border-radius: 10px;
+      &__name{
+        padding-right: 5px;
+      }
+      &__time{
+        margin-left:auto;
+      }
+    }
+  }
+}
  
