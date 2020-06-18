@@ -65,6 +65,7 @@ class RecipesController < ApplicationController
     @comment = Comment.new
     @comments = @recipe.comments.includes(:user)
     @comments_count = Comment.where(recipe_id: @recipe.id).count
+    @reports_count = Report.where(recipe_id: @recipe.id).count
   end
 
   def search

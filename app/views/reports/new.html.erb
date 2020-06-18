@@ -1,0 +1,17 @@
+<div class="report_form">
+  <div class="report-title">
+    <%= "#{@recipe.title} のレポを投稿する"%>
+  </div>
+  <%= form_for @report, url:recipe_reports_path do |f|%>
+    <div class="img-field",id="img-report">
+      <%= f.label :image ,"画像を選択"%>
+      <%= f.file_field :image ,class:"img-btn", id: :report_image%>
+    </div>
+    <div class="text-field">
+      <%= f.text_area :text ,placeholder: "repo", row: "3"%>
+    </div>
+    <div class="btn-send">
+      <%= f.submit "投稿する", class:"report-btn" %>
+    </div>
+  <% end %>
+</div>

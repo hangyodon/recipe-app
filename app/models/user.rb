@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorited_recipes, through: :favorites, source: :recipe
   has_many :comments, dependent: :destroy
+  has_many :reports, dependent: :destroy
 
   validates :nickname, presence: true
   

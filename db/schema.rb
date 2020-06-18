@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_17_025955) do
+ActiveRecord::Schema.define(version: 2020_06_18_012800) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
@@ -49,6 +49,17 @@ ActiveRecord::Schema.define(version: 2020_06_17_025955) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+  end
+
+  create_table "reports", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "text", null: false
+    t.string "image", null: false
+    t.bigint "recipe_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recipe_id"], name: "index_reports_on_recipe_id"
+    t.index ["user_id"], name: "index_reports_on_user_id"
   end
 
   create_table "steps", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -105,6 +116,8 @@ ActiveRecord::Schema.define(version: 2020_06_17_025955) do
   add_foreign_key "favorites", "recipes"
   add_foreign_key "favorites", "users"
   add_foreign_key "materials", "recipes"
+  add_foreign_key "reports", "recipes"
+  add_foreign_key "reports", "users"
   add_foreign_key "steps", "recipes"
   add_foreign_key "taggings", "tags"
 end

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :recipes, only: [:index, :new, :create, :destroy, :edit, :update, :show] do
     resources :favorites, only: [:create, :destroy]
     resources :comments, only: [:create, :show]
+    resources :reports, only: [:new, :create, :show]
     collection do
       get 'main'
       get 'side'

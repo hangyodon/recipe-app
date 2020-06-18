@@ -1,17 +1,29 @@
-<div class="under-content">
+<div class="details-content">
   <div class="content_post">
-    <% if user_signed_in? %>
-      <div id="favorite-<%= @recipe.id %>",class="fav_btn">
-        <%= render partial: "favorite", locals: { recipe: @recipe } %>
-        <%= @favorites_count %>
+    <div class="content_post__left">
+      <% if user_signed_in? %>
+        <div id="favorite-<%= @recipe.id %>",class="fav_btn">
+          <%= render partial: "favorite", locals: { recipe: @recipe } %>
+        </div>
+        <div class="content_post__left__fav"><%= @favorites_count %></div>
+      <% end %>
+      <div class="report">
+        <div id="reports">
+          <i class="fas fa-utensils fa-2x"></i>
+          <%= @reports_count %>
+        </div>
+        <div class="report__select">
+          <div class="report__select__write"><%= link_to "レポを書く",new_recipe_report_path(@recipe) %></div>
+          <div class="report__select__see"><%= link_to "レポを見る",recipe_report_path(@recipe)%></div>
+        </div>     
       </div>
-    <% end %>
+    </div>
     <% if user_signed_in? && current_user.id == @recipe.user_id %>
       <div class = "more_list">
         <%= link_to "/recipes/#{@recipe.id}/edit", method: :get ,class: "list-btn" do %>
         <i class="fas fa-edit fa-2x "></i>
         <% end %>
-        <%= link_to "/recipes/#{@recipe.id}", method: :delete ,class: "list-btn" do %>
+        <%= link_to "/recipes/#{@recipe.id}", method: :delete ,class: "list-btn", data: { confirm: '削除しますか？' } do %>
         <i class="far fa-trash-alt fa-2x"></i>
         <% end %>
       </div>
@@ -54,4 +66,30 @@
         </ul>
       <% end %>
     </div>
+  </div>
+  <div class="comment-content">
+    <% if current_user%>
+      <div class="comment-content__comments">
+        <div id="comments">
+        <i class="far fa-comments fa-2x"></i>
+        <%= @comments_count %>
+        </div>
+        <div class="comment-select">
+          <div class="comment-select__write">コメントする</div>
+          <%= link_to "コメントを見る", recipe_comment_path(@recipe),class:"comment-select__see" %>
+        </div>
+        <%= form_with(model: [@recipe, @comment], local: true) do |f| %>
+        <div class="comment-fields">
+          <div class="comment-field">
+            <%= f.text_area :text, placeholder: "コメントする", rows: "2" %>
+            <%= f.submit "SEND" ,class:"comment-btn"%>
+          </div>
+        </div>
+        <% end %>
+    <% else %>
+    <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
+  <% end %>
+      </div>
+    </div> 
+  </div> 
 </div>

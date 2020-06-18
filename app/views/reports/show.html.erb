@@ -1,0 +1,18 @@
+<div class="reports-content">
+  <div class="report-content">
+    <% @reports.each do |report| %>
+        <article class="report-content__val">
+          <figure class="report-content__val__image">
+            <%= image_tag report.image.to_s %>
+          </figure>
+          <div class="report-content__val__text">
+            <%= report.text %>
+          </div>
+          <div class="report-content__val__name">
+            <p>投稿者 : </p><%= link_to "#{report.user.nickname}さん", "/users/#{report.user_id}" %>
+          </div>
+        </article>
+    <% end %>
+  </div>
+  <div class='reports-content__paginate'> <%= paginate @reports %></div>
+</div>
