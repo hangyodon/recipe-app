@@ -39,7 +39,6 @@ class RecipesController < ApplicationController
     if @recipe.save
       redirect_to root_path, notice: '投稿が完了しました'
     else
-      flash.now[:alert] = '投稿に失敗しました'
       render :new
     end
   end
@@ -55,7 +54,11 @@ class RecipesController < ApplicationController
 
   def update
     recipe = Recipe.find(params[:id])
-    recipe.update(recipe_params)
+    if recipe.update(recipe_params)
+      redirect_to root_path, notice: '編集が完了しました'
+    else
+      redirect_to root_path, alert: '編集に失敗しました'
+    end
   end
 
   def show

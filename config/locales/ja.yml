@@ -1,5 +1,21 @@
 ja:
   activerecord:
+    attributes:
+      recipe:
+        title: "タイトル"
+        image: "写真"
+        calorie: "カロリー"
+        sugar: "糖質"
+        category: "カテゴリー"
+      recipe/materials:
+        name: "材料名"
+        amount: "分量"
+      recipe/steps:
+        number: "順番"
+        process: "作り方"
+      report:
+        text: "レポート内容"
+        image: "写真"
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

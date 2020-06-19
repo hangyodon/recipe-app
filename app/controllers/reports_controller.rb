@@ -6,9 +6,13 @@ class ReportsController < ApplicationController
 
   def create
     @report = Report.new(report_params)
+    @recipe = Recipe.find(params[:recipe_id])
+    
     if @report.save
       flash[:notice] = "レポートを投稿しました"
-    redirect_to root_path
+      redirect_to root_path
+    else
+      render :new
     end
   end
 
