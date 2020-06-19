@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     if @comment.save
       flash[:notice] = "コメントを投稿しました"
-    redirect_to root_path
+      redirect_to root_path
     end
   end
 
@@ -13,10 +13,14 @@ class CommentsController < ApplicationController
     @comments = @recipe.comments.includes(:user)
   end
 
+  def destroy
+    Comment.find_by(id: params[:id],recipe_id: params[:recipe_id]).destroy
+    flash[:notice] = "コメントを削除しました"
+    redirect_to root_path
+  end
+
   private
   def comment_params
     params.require(:comment).permit(:text).merge(user_id: current_user.id, recipe_id: params[:recipe_id])
   end
 end
-
-# /recipes/#{comment.recipe.id}"

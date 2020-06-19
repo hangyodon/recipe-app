@@ -986,8 +986,15 @@ header {
       &__name{
         padding-right: 5px;
       }
-      &__time{
+      &__right{
+        display: flex;
         margin-left:auto;
+        &__time{
+          padding-right: 5px;
+        }
+        &__trash{  
+          cursor: pointer;        
+        }
       }
     }
   }

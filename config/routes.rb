@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   end
   resources :recipes, only: [:index, :new, :create, :destroy, :edit, :update, :show] do
     resources :favorites, only: [:create, :destroy]
-    resources :comments, only: [:create, :show]
+    resources :comments, only: [:create, :show, :destroy]
     resources :reports, only: [:new, :create, :show]
     collection do
       get 'main'

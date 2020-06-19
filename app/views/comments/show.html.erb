@@ -8,8 +8,17 @@
         <div class="comment-content__comment__text">
           <%= comment.text %>
         </div>
-        <div class="comment-content__comment__time">
-          <%= comment.created_at.strftime('%Y/%m/%d') %>
+        <div class="comment-content__comment__right">
+          <div class="comment-content__comment__right__time">
+            <%= comment.created_at.strftime('%Y/%m/%d') %>
+          </div>
+          <div class="comment-content__comment__right__trash">
+          <% if user_signed_in? && current_user.id == comment.user_id %>
+            <%= link_to recipe_comment_path(comment.recipe.id, comment.id), method: :delete ,data: { confirm: '削除しますか？' } do %>
+            <i class="fas fa-trash"></i>
+            <% end %>
+          <% end %>
+          </div>
         </div>
       </article>
     <% end %>
