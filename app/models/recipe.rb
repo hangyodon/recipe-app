@@ -13,6 +13,11 @@ class Recipe < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :reports, dependent: :destroy
 
+  validates :title, presence: true
+  validates :image, presence: true
+  validates :calorie, presence: true
+  validates :sugar, presence: true
+  validates :category, presence: true
 
 
 end
