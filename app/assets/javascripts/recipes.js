@@ -24,7 +24,7 @@ $(document).on('turbolinks:load', function(){
                       </div>
                    </div>
                  </div>`
-      //image_box__container要素の前にhtmlを差し込む
+
       $('.preview-content').remove();
       $('.img-field').before(html);
     }
@@ -37,11 +37,6 @@ $(document).on('turbolinks:load', function(){
       $('.img-field label').text('画像を選択する');
 
     });
-
-    // $(document).on('click', '.update-box', function() {
-    //   $('#recipe_image').trigger("click")
-    //   $('.preview-content').remove();
-    // });
     
   });
 
