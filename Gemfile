@@ -74,6 +74,7 @@ gem 'pry-rails'
 gem 'kaminari'
 gem 'devise'
 gem "cocoon"
+gem 'fog-aws'
 
 group :production do
   gem 'pg'
