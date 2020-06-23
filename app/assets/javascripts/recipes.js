@@ -47,9 +47,9 @@ $(document).on('turbolinks:load', function(){
 $(document).on('turbolinks:load', function(){
 $(function(){
   $('.dropdwn li').hover(function(){
-      $("ul", this).slideDown();
+      $('>ul:not(:animated)', this).slideDown();
   }, function(){
-      $("ul.dropdwn_menu",this).slideUp();
+      $('>ul',this).slideUp();
   });
 });
 
