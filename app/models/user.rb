@@ -14,4 +14,11 @@ class User < ApplicationRecord
   def already_favorited?(recipe)
     self.favorites.exists?(recipe_id: recipe.id)
   end
+
+  def self.guest
+    find_or_create_by!(nickname: 'sample', email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+    end
+  end
+
 end
