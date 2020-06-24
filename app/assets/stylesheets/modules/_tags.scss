@@ -1,0 +1,26 @@
+@import './color';
+@mixin tags($color){
+  .text-white {
+    margin-top: 5px;
+    position: relative;
+    display: inline-block;
+    font-weight: bold;
+    padding: 0.25em 0.5em;
+    text-decoration: none;
+    color: $color;
+    background: #ececec;
+    transition: 0.4s;
+    .name {
+      font-size: 20px;
+      margin-top: 5px;
+      padding-left: 20px;
+    }
+    &:hover {
+      background: $color;
+      color: $white;
+    }
+    a:visited {
+      color: $color;
+    }
+  }
+}

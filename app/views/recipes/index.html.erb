@@ -21,8 +21,8 @@
         <div class="l-wrapper">
           <article class="card">        
             <div class="card__header">
-              <h3 class="card__title"><%= recipe.title %></h3>
-              <figure class="card__thumbnail">
+              <h3 class="card__header__title"><%= recipe.title %></h3>
+              <figure class="card__header__thumbnail">
                 <%= image_tag recipe.image.to_s%>
               </figure>
             </div>
@@ -35,7 +35,7 @@
               </div>
             </div>
             <div class="card__footer">
-            <p class=""><p class="card__text"><%= link_to '詳細をみる', "/recipes/#{recipe.id}", method: :get ,class:"button -compact"%></p>
+            <p class=""><p class="card__footer__text"><%= link_to '詳細をみる', "/recipes/#{recipe.id}", method: :get ,class:"button -compact"%></p>
             </div>
           </article>
         </div>

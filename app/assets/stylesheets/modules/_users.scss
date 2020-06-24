@@ -1,3 +1,5 @@
+@import './card';
+@import './color';
 @import url(https://fonts.googleapis.com/css?family=Corben:700);
 
 body{
@@ -18,7 +20,7 @@ body{
       padding: 7px 0;
       font-size: 18px;
       background: #acd879;
-      color: #FFF;
+      color: $white;
       box-sizing: border-box;
       h1{
         margin: 0;
@@ -38,112 +40,20 @@ body{
         top: 0;
         left: 0;
         border-width: 30px 0px 30px 15px;
-        border-color: transparent transparent transparent #fff;
+        border-color: transparent transparent transparent $white;
         border-style: solid;
       }
       :after{
         top: 0;
         right: 0;
         border-width: 30px 15px 30px 0px;
-        border-color: transparent #fff transparent transparent;
+        border-color: transparent $white transparent transparent;
         border-style: solid;
       }
     }
     }
   .under-content{
-    display: flex;
-    margin-left: 10px;
-    margin-right: 30px;
-    .l-wrapper {
-      margin: 3rem auto;
-      width: 320px;
-    }
-    img {
-      width: 320px;
-      height: 250px;
-      object-fit: cover;
-      vertical-align: bottom;
-    }
-    .card {
-      background-color: #fff;
-      box-shadow: 0 0 8px rgba(0, 0, 0, .16);
-      color: #212121;
-      text-decoration: none;
-    }
-        
-        .card__header {
-          display: flex;      
-          flex-wrap: wrap;
-        }
-        
-        .card__title {
-          padding: 1rem 1rem 0;
-          font-size: 1.25rem;
-          order: 1;
-        }
-        
-        .card__thumbnail {
-          margin: 0;
-          order: 0;
-        }
-        
-        .card__image {
-          width: 100%;
-        }
-        
-        .card__body {
-          padding: 1rem;
-          .maru {
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 50%;
-            flex-flow: column; 
-            vertical-align: top;
-            width: 90px;
-            height: 60px;
-            color: orange;
-            border: 3px solid orange;
-            margin-right: 10px;
-            font-size: 20px;
-          }
-        }
-        
-        .card__text {
-          font-size: .75rem;
-        }
-        
-        .card__text + .card__text {
-          margin-top: .5rem;
-        }
-        
-        .card__text.-number {
-          text-align: right;
-        }
-        
-        .card__footer {
-          padding: 1rem;
-          border-top: 1px solid #ddd;
-        }
-        
-        .button {
-          display: inline-block;
-          text-decoration: none;
-          transition: background-color .3s ease-in-out;
-        }
-        
-        .button.-compact {
-          padding: .5rem 1rem;
-          border-radius: .25rem;
-          background-color: #26a69a;
-          color: #fff;
-          font-weight: bold;
-        }
-        
-        .button.-compact:hover,
-        .button.-compact:focus {
-          background-color: #80cbc4;
-        }
+    @include card;
       }
   .user-paginate{
     text-align: center;
@@ -151,10 +61,10 @@ body{
     font-size: 20px;
     font-family: 'Corben', cursive;;
     a:visited{
-      color: #26a69a;
+      color: $main;
     }
     a:hover, a:active, a:focus, a:target{
-      color: #A269A8;
+      color: $purple;
     }
    }
   }
@@ -166,10 +76,9 @@ body{
 url(https://fonts.googleapis.com/css?family=Quicksand);
 
 .form-wrapper{
-  // position: relative;
   font-family: 'Quicksand', sans-serif;
   z-index: 1;
-  background: #FFFFFF;
+  background: $white;
   max-width: 500px;
   margin: 100px auto 100px;
   padding: 45px;
@@ -182,7 +91,7 @@ url(https://fonts.googleapis.com/css?family=Quicksand);
     color: #212121;
   }
   a:hover{
-    color: #26a69a;
+    color: $main;
   }
   h2{
     font-size: 35px;
@@ -208,7 +117,7 @@ url(https://fonts.googleapis.com/css?family=Quicksand);
       text-align: center;
     }
     input:focus{
-      border-bottom: 2px solid #26a69a;
+      border-bottom: 2px solid $main;
 	    outline: none;
     }
     }
@@ -234,7 +143,7 @@ url(https://fonts.googleapis.com/css?family=Quicksand);
               transition:         transform 0.4s cubic-bezier(0.45, 1.8, 0.5, 0.75);
       -webkit-transform: rotate(-45deg) scale(0, 0);
               transform: rotate(-45deg) scale(0, 0);
-      border: 2px solid #da3c41;
+      border: 2px solid $rose;
       border-top-style: none;
       border-right-style: none;
     }
@@ -251,7 +160,7 @@ url(https://fonts.googleapis.com/css?family=Quicksand);
       content: '';
       cursor: pointer;
       border: 2px solid #f2f2f2;
-      background: #ffffff;
+      background: $white;
     }
   }
       .btn-actions{
@@ -261,24 +170,24 @@ url(https://fonts.googleapis.com/css?family=Quicksand);
           display: inline-block;
           padding: 0.3em 1em;
           text-decoration: none;
-          color:  #26a69a;
-          border: solid 2px  #26a69a;
+          color:  $main;
+          border: solid 2px  $main;
           border-radius: 3px;
           transition: .4s;
-          background-color: #ffffff;
+          background-color: $white;
         }
         .action-btn:hover{
-          background: #26a69a;
-          color: white;
+          background: $main;
+          color: $white;
           cursor: pointer;
         }
         #delete{
-          color: #F83333;
-          border: solid 2px  #F83333;
+          color: $rose;
+          border: solid 2px  $rose;
         }
         #delete:hover{
-          background: #F83333;
-          color: white;
+          background: $rose;
+          color: $white;
           cursor: pointer;
         }
       }

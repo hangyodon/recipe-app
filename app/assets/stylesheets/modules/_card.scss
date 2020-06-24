@@ -1,0 +1,97 @@
+@import './color';
+
+@mixin card{
+  display: flex;
+  margin-left: 10px;
+  margin-right: 30px;
+  .l-wrapper {
+    margin: 3rem auto;
+    width: 320px;
+    img {
+      width: 320px;
+      height: 250px;
+      object-fit: cover;
+      vertical-align: bottom;
+    }
+    .card {
+      background-color: $white;
+      box-shadow: 0 0 8px rgba(0, 0, 0, .16);
+      color: #212121;
+      text-decoration: none;
+      &__header {
+        display: flex;      
+        flex-wrap: wrap;
+        &__title {
+          padding: 1rem 1rem 0;
+          font-size: 1.25rem;
+          order: 1;
+        }
+        &__thumbnail {
+          margin: 0;
+          order: 0;
+        }
+      }
+      &__body {
+        padding: 1rem;
+        .maru {
+          display: inline-flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 50%;
+          flex-flow: column; 
+          vertical-align: top;
+          width: 90px;
+          height: 60px;
+          color: orange;
+          border: 3px solid orange;
+          margin-right: 10px;
+          font-size: 20px;
+        }
+      }
+      &__image {
+        width: 100%;
+      }
+      .card__text + .card__text {
+        margin-top: .5rem;
+      }
+      .card__text.-number {
+        text-align: right;
+      }
+      &__footer {
+        padding: 1rem;
+        border-top: 1px solid #ddd;
+        &__text {
+          font-size: .75rem;
+        }
+        .button {
+          display: inline-block;
+          text-decoration: none;
+          transition: background-color .3s ease-in-out;
+        }
+        .button.-compact {
+          padding: .5rem 1rem;
+          border-radius: .25rem;
+          background-color: $main;
+          color: $white;
+          font-weight: bold;
+        }
+        .button.-compact:hover,
+        .button.-compact:focus {
+          background-color: #80cbc4;
+        }
+      }
+    }
+  }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+}

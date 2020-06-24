@@ -1,14 +1,15 @@
+@import './color';
 .notification {
   .notice {
-    background-color: #26A6A4;
-    color: #ffffff;
+    background-color: $main;
+    color: $white;
     text-align: center;
     font-size: 20px;
   }
 
   .alert {
-    background-color: red;
-    color: #ffffff;
+    background-color: $rose;
+    color: $white;
     text-align: center;
     font-size: 20px;
   }

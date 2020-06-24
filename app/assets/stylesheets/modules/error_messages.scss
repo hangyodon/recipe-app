@@ -1,5 +1,6 @@
+@import './color';
 .text-danger{
-  background: red;
-  color: white;
+  background: $rose;
+  color: $white;
   padding: 10px;
 }
