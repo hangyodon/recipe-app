@@ -19,22 +19,21 @@
     <% end %>
 
     <div class="field">
-      <%= f.label :password %> <i>(変更したくない場合は空)</i><br />
-      <%= f.password_field :password, autocomplete: "new-password" %>
+      <%= f.label :password %>
       <% if @minimum_password_length %>
-        <br />
-        <em><%= @minimum_password_length %> 文字以上</em>
+        <em>（<%= @minimum_password_length %> 文字以上）</em>
       <% end %>
+      <%= f.password_field :password, autocomplete: "new-password" ,placeholder: "変更したくない場合は空のままお進みください" %>
     </div>
 
     <div class="field">
       <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" ,placeholder: "変更するパスワードを再度入力してください"%>
     </div>
 
     <div class="field">
-      <%= f.label :current_password %> <br><i>(変更するためには現在のパスワードが必要です)</i><br />
-      <%= f.password_field :current_password, autocomplete: "current-password" %>
+      <%= f.label :current_password %> 
+      <%= f.password_field :current_password, autocomplete: "current-password" ,placeholder: "プロフィール変更には現在のパスワードが必要です"%>
     </div>
 
     <div class="btn-actions">
