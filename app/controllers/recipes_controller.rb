@@ -16,15 +16,15 @@ class RecipesController < ApplicationController
   end
 
   def main
-    @recipes = Recipe.where(category: "main")
+    @recipes = Recipe.where(category: "main").page(params[:page]).per(4).order("created_at DESC")
   end
 
   def side
-    @recipes = Recipe.where(category: "side")
+    @recipes = Recipe.where(category: "side").page(params[:page]).per(4).order("created_at DESC")
   end
 
   def soup
-    @recipes = Recipe.where(category: "soup")
+    @recipes = Recipe.where(category: "soup").page(params[:page]).per(4).order("created_at DESC")
   end
 
   def new
