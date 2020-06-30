@@ -19,7 +19,6 @@
     </div>
     <div class="tag-field">
       <h2>タグ ( カンマで区切ってください )</h2>
-      <%# <%= f.label :tag_list %> 
     <ul><%= f.text_field :tag_list, value: @recipe.tag_list.join(','), class: "form-control", id: "myTags" %></ul>
     </div>
     <div id="materials" > 
