@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RecipeApp</title>
   
     <%= csrf_meta_tags %>
@@ -19,6 +20,7 @@
 
   <body>
   <%= render 'layouts/notifications'%>
+
   <header id="header">
     <h1 class="logo"><%= link_to "Recipe",root_path %></h1>
     <div class="search-content">
@@ -29,31 +31,67 @@
         <% end %>
         <% end %>
     </div>
-      <% if user_signed_in? %>
-          <div class="dropdwn">
-            <li class="btn-flat-border">メニュー
-              <ul class="dropdwn__menu">
-                <li><%= link_to "マイページ","/users/#{current_user.id}" %></li>
-                <li><%= link_to "お気に入り", "/users/#{current_user.id}/favorites"%></li>
-                <li><%= link_to "新規投稿", "/recipes/new", class: "post" %></li>
-                <li><%= link_to "プロフィール変更", "/users/edit" %></li>
-              </ul>
-            </li>
-          </div>
-          <div class="log-out">
-            <li class="btn-flat-border"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></div>
-          </div>
-      <% else %>
-        <div class="btn">
-          <ul>
-            <li class="btn-flat-border"><%= link_to "ログイン", new_user_session_path, class: 'post' %></li>
-            <li class="btn-flat-border"><%= link_to "新規登録", new_user_registration_path, class: 'post' %></li>
-            <li class="btn-flat-border"><%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %></li>
+    <% if user_signed_in? %>
+      <div class="dropdwn">
+        <li class="btn-flat-border">メニュー
+          <ul class="dropdwn__menu">
+            <li><%= link_to "マイページ","/users/#{current_user.id}" %></li>
+            <li><%= link_to "お気に入り", "/users/#{current_user.id}/favorites"%></li>
+            <li><%= link_to "新規投稿", "/recipes/new", class: "post" %></li>
+            <li><%= link_to "プロフィール変更", "/users/edit" %></li>
           </ul>
-        </div>
-      <% end %>
+        </li>
+      </div>
+      <div class="log-out">
+        <li class="btn-flat-border"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></div>
+      </div>
+    <% else %>
+      <div class="btn">
+        <ul>
+          <li class="btn-flat-border"><%= link_to "ログイン", new_user_session_path, class: 'post' %></li>
+          <li class="btn-flat-border"><%= link_to "新規登録", new_user_registration_path, class: 'post' %></li>
+          <li class="btn-flat-border"><%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %></li>
+        </ul>
+      </div>
+    <% end %>
+    <% if user_signed_in? %>
+    <% else %>
+      <div class="guest">
+        <ul>
+          <li class="btn-flat-border"><%= link_to "ログイン", new_user_session_path, class: 'post' %></li>
+          <li class="btn-flat-border"><%= link_to "新規登録", new_user_registration_path, class: 'post' %></li>
+        </ul>
+      </div>
+    <% end %>
   </header>
     <%= yield %>
-    
+    <% if user_signed_in? %>
+    <footer>
+      <div class="under-nav">
+        <ul class="under-nav__menu">
+          <li>
+            <%= link_to "/users/#{current_user.id}" do %>
+              <i class="fas fa-user-circle fa-2x"><p>マイページ</p></i>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to "/users/#{current_user.id}/favorites" do %>
+              <i class="fas fa-heart fa-2x"><p>お気に入り</p></i>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to "/recipes/new", class: "post" do%>
+              <i class="fas fa-pen fa-2x"><p>新規投稿</P></i>
+            <% end %>
+          </li>
+          <li>
+          <%= link_to "/users/edit" do %>
+            <i class="fas fa-user-edit fa-2x"><p>登録情報変更</p></i>
+          <% end %>
+          </li>
+        </ul>
+      </div>
+    </footer>
+    <% end %>
   </body>
 </html>

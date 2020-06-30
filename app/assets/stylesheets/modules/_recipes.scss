@@ -162,10 +162,48 @@ header {
       color: $white;
     }
   }
+  .guest li{
+    display: none;
+  }
+  @media(max-width: 812px){
+    width: 100%;
+    display: flex;
+    padding-left: 10px;
+    padding-right: 5px;
+    .logo {
+      font-size: 35px;
+    }
+    .search-content{
+      display: none;
+    }
+    .btn {
+      display: none;
+    }
+    .dropdwn {
+      display: none;
+    }
+    .log-out{
+      font-size: 12px;
+      padding-right: 5px;
+    }
+    .guest li{
+      display: inline;
+      font-size: 12px;
+      margin-right: 5px;
+      a,
+      a:visited {
+        color: $main;
+      }
+    } 
+  }
 }
 
 .contents {
   height: calc(100vh - 70px);
+  overflow: scroll;
+  .search-content{
+    display: none;
+  }
   .category-content{
     display: flex;
     justify-content: center;
@@ -229,19 +267,73 @@ header {
   .under-content {
     @include card;
   }
-  @import url(https://fonts.googleapis.com/css?family=Corben:700);
-  .index-paginate {
-    text-align: center;
-    margin: 0 auto;
-    font-size: 20px;
-    font-family: "Corben", cursive;
-    a:visited {
-      color: $main;
+  .peginate{
+    display: block;
+    @import url(https://fonts.googleapis.com/css?family=Corben:700);
+    .index-paginate {
+      text-align: center;
+      margin: 0 auto;
+      font-size: 20px;
+      font-family: "Corben", cursive;
+      a:visited {
+        color: $main;
+      }
+      a:hover,
+      a:active,
+      a:focus {
+        color: $purple;
+      }
     }
-    a:hover,
-    a:active,
-    a:focus {
-      color: $purple;
+  }
+  @media(max-width: 812px){
+    .search-content{
+      display: block;
+      height: 70px;
+      width: 85%;
+      padding-top: 13px;
+      position: relative;
+      margin: 0 auto;
+      input {
+        outline: 0;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-bottom: 1px solid #d1d1d1;
+        font-size: 1.2em;
+        padding: 8px;
+        box-sizing: border-box;
+      }
+      input[type="text"],
+      .field {
+        display: inline-block;
+        height: 45px;
+        margin-bottom: 14px;
+        padding: 0 12px;
+        border: 0;
+        border-radius: 3px;
+        background-color: #eff1f5;
+        box-shadow: none;
+        color: #5c6b80;
+        font-size: 1em;
+        vertical-align: middle;
+        line-height: 45px;
+        transition: background-color 0.24s ease-in-out;
+      }
+      #search-input {
+        height: 40px;
+        width: 100%;
+      }
+      #search-btn {
+        height: 40px;
+        background: none;
+        border: none;
+        position: absolute;
+        right: 10px;
+        &:hover {
+          -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+        }
+      }
     }
   }
 }
@@ -820,5 +912,41 @@ header {
       }
     }
   }
+}
+
+footer {
+  display: none;
+}
+
+@media(max-width: 680px){
+  footer{
+    display: block;
+    position: sticky;
+    bottom: 0;
+    height: 60px;
+    width: 100%;
+    background-color: $white;
+    border-top: 3px solid $main;
+    a,
+    a:visited {
+      color: $main;
+    }
+    .under-nav{
+      padding: 5px;
+      li {
+        text-align: center;
+        cursor: pointer;
+      }
+      &__menu{
+        p{
+          font-size: 12px;
+          padding-top: 4px;
+        }
+        display: flex;
+        justify-content: space-around;
+      }
+    }
+  }
+
 }
  
