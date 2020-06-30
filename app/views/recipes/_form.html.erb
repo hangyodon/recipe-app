@@ -1,5 +1,6 @@
     <%= render 'layouts/error_messages', { target: @recipe } %>
 <div class="contents_form">
+  <div class="contents_form__val">
   <%= form_for @recipe do |f| %>
     <div class="title-field">
       <%= f.text_field :title , placeholder: "Title" %>
@@ -44,6 +45,7 @@
     <%= f.submit "投稿する", class:"send-btn" %>
     </div> 
   <% end %>
+  </div>
 </div>    
 
 
