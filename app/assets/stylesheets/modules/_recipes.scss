@@ -981,6 +981,14 @@ header {
       color: $purple;
     }
   }
+  @media(max-width: 680px){
+    .report-content{
+      width: 100%;
+      &__val{
+        margin-right: 0;
+      }
+    }
+  }
 }
 
 //コメント
@@ -1012,6 +1020,13 @@ header {
           cursor: pointer;        
         }
       }
+    }
+  }
+  @media(max-width: 680px){
+    .comment-content{
+      padding: 7px;
+      border: 3px double $skyblue;
+      height: 70vh;
     }
   }
 }
