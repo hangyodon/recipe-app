@@ -162,7 +162,7 @@ header {
       color: $white;
     }
   }
-  .guest li{
+  .guest {
     display: none;
   }
   @media(max-width: 820px){
@@ -186,10 +186,12 @@ header {
       font-size: 12px;
       padding-right: 5px;
     }
-    .guest li{
+    .guest {
       display: inline;
       font-size: 12px;
-      margin-right: 5px;
+      li {
+        margin-right: 5px;
+      }
       a,
       a:visited {
         color: $main;
@@ -423,11 +425,13 @@ header {
       display: flex;
       justify-content: space-between;
       margin: 0 30px;
+      a, a:visited{
+        color: $skyblue
+      }
       .title {
         font-size: 25px;
         text-align: center;
       }
-  
       .diet {
         display: flex;
         margin-top: 5px;
@@ -515,6 +519,70 @@ header {
 
     }
   }
+  @media(max-width: 680px) {
+    width: 100%;
+    margin: 0;
+    .content_post{
+      padding-left: 5px;
+    }
+    .recipe-content{
+      img{
+        height: 200px;
+        width: 100%;
+      }
+      .recipe-header {
+        display: block;
+        .diet{
+          font-size: 15px;
+          display: flex;
+          justify-content: center;
+          .calorie{
+            border: 2px solid orange;
+            padding: 8px;
+            border-radius: 20px;
+            margin-right: 10px;
+          }
+          .sugar{
+            border: 2px solid orange;
+            padding: 8px;
+            border-radius: 20px;
+          }
+        }
+        .tags {
+          text-align: center;
+          margin-top: 5px;
+        }
+        .user-name{
+          float: right;
+          padding-bottom: 5px;
+          
+        }
+      }
+      .image-material{
+        display: block;
+        .materials {
+          padding-left: 0;
+        }
+      }
+      .steps {
+        margin-left: 0;
+      }
+    }
+    .comment-content{
+      margin-bottom: 10px;
+      &__comments{
+        #comments{
+          padding-left: 5px;
+        }
+        .comment-select{
+          margin-left: 10px;
+          font-size: 12px;
+          
+        }
+      }
+    }
+    
+  }
 }
 
 // 投稿フォーム
@@ -552,7 +620,6 @@ header {
     height: 30px;
     padding: 5px;
   }
-
   .preview-content{
     padding-top: 10px;
     width: 200px;
