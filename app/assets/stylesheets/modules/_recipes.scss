@@ -909,6 +909,17 @@ header {
       border-radius: 5px;
     }
   }
+  @media(max-width: 812px){
+    .report-title{
+      font-size: 20px;
+    }
+    .text-field{
+      textarea{
+        width: 100%;
+      }
+    }
+  }
+
 }
 
 //レポート
