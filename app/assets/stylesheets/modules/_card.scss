@@ -2,8 +2,7 @@
 
 @mixin card{
   display: flex;
-  margin-left: 10px;
-  margin-right: 30px;
+  margin: 0 auto;
   .l-wrapper {
     margin: 3rem auto;
     width: 320px;
