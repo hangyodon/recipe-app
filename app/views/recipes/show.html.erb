@@ -36,14 +36,18 @@
         <div class="calorie">カロリー<%= @recipe.calorie %>kcal</div>
         <div class="sugar">糖質<%= @recipe.sugar%>g</div>
       </div>
-      <span class="tag-list">
-      <%= render 'recipes/tag_list', tag_list: @recipe.tag_list %>
-      </span>
-      <span class="name">
-        <a href="/users/<%= @recipe.user.id %>">
-          <span><%= @recipe.user.nickname %>さん</span>
-        </a>
-      </span>     
+      <div class="tags">
+        <span class="tag-list">
+        <%= render 'recipes/tag_list', tag_list: @recipe.tag_list %>
+        </span>
+      </div>
+      <div class="user-name">
+        <span class="name">
+          <a href="/users/<%= @recipe.user.id %>">
+            <span><%= @recipe.user.nickname %>さん</span>
+          </a>
+        </span>
+      </div>
     </div>
     <div class="image-material">
       <div class="recipe-img"><%= image_tag @recipe.image.to_s%></div>
