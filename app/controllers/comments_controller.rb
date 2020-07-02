@@ -11,6 +11,7 @@ class CommentsController < ApplicationController
     @recipe = Recipe.find(params[:id])
     @user = @recipe.user
     @comments = @recipe.comments.includes(:user)
+    @comments_count = Comment.where(recipe_id: @recipe.id).count
   end
 
   def destroy
